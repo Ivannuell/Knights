@@ -8,12 +8,11 @@ export default class StateMachine {
     this.activeState = new idle_state()
     this.activeState.scene = scene
     this.activeState.player = player
-
   }
   
   updateState() {
     this.activeState.player.setImmovable(false)
-    
+
     if (!this.activeState.entered) {
       this.activeState.entered = true
       this.activeState.enter()
