@@ -1,9 +1,12 @@
 import StateMachine from "../stateMachine";
 
 export default abstract class base_state {
-  player!: Phaser.GameObjects.Sprite;
+  player!: Phaser.Physics.Arcade.Sprite;
   stateMachine!: StateMachine;
   scene!: Phaser.Scene
+  keyboardAPI!: Phaser.Input.Keyboard.KeyboardPlugin
+
+  entered = false
 
 
   abstract enter(): void

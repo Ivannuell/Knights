@@ -4,14 +4,20 @@ import idle_state from "./states/idle_state";
 
 export default class StateMachine {
   activeState!: base_state
-  constructor(public scene: Phaser.Scene, public player: Phaser.GameObjects.Sprite) {
+  constructor(public scene: Phaser.Scene, public player: Phaser.Physics.Arcade.Sprite) {
     this.activeState = new idle_state()
     this.activeState.scene = scene
     this.activeState.player = player
-  }
 
+  }
+  
   updateState() {
-    this.activeState.enter()
+    this.activeState.player.setImmovable(false)
+    
+    if (!this.activeState.entered) {
+      this.activeState.entered = true
+      this.activeState.enter()
+    }
 
     if (this.activeState.update() != this.activeState) {
       this.activeState.exit()
@@ -19,5 +25,6 @@ export default class StateMachine {
       this.activeState.scene = this.scene
       this.activeState.player = this.player
     }
+
   }
 }

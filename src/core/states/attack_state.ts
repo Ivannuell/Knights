@@ -1,6 +1,6 @@
 import base_state from "./base_state";
-import fight_state from "./fight_state";
 import idle_state from "./idle_state";
+// import move_state_right from "./move_state_right";
 
 export default class attack_state extends base_state {
 

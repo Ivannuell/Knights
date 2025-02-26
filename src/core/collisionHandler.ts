@@ -8,7 +8,7 @@ export class CollisionHandler {
     object2: Phaser.Types.Physics.Arcade.ArcadeColliderType, 
     callback?: Phaser.Types.Physics.Arcade.ArcadePhysicsCallback
   ) {
-    this.scene.physics.add.collider(object1, object2, undefined, () => true
+    this.scene.physics.add.collider(object1, object2, callback, () => true
     , this.scene)
   }
 }

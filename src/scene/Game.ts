@@ -14,12 +14,7 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
-    this.physics.world.checkCollision = {
-      up:true,
-      down:true,
-      left:true,
-      right:true
-    }
+
     this.knight = this.generateKnight()
     this.ground = this.generateGround()
 

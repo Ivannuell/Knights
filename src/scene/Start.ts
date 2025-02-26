@@ -30,6 +30,7 @@ export default class Start extends Phaser.Scene {
       key: 'run',
       frames: this.anims.generateFrameNumbers('knight_run', {start: 0, end: 11}),
       frameRate: 12,
+      repeat: -1
     })
 
     this.anims.create({
