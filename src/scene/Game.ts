@@ -1,10 +1,14 @@
 import { CollisionHandler } from "../components/collisionHandler"
 import StateMachine from "../core/knight/stateMachine";
 import Knight from "../core/knight/Knight"
+import { testBox } from "../core/testBox/testBox";
 
 export default class Game extends Phaser.Scene {
   knight!: Knight;
+  damageBox!: testBox
+  
   ground!: Phaser.GameObjects.Rectangle
+
   state_machine!: StateMachine
   collisions = new CollisionHandler(this)
 
@@ -15,10 +19,12 @@ export default class Game extends Phaser.Scene {
   create() {
     this.knight = this.generateKnight()
     this.ground = this.generateGround()
+    this.damageBox = this.generateDamageBox()
 
     this.state_machine = new StateMachine(this, this.knight)
+    
     this.collisions.addCollider(this.knight, this.ground)
-
+    this.collisions.addCollider(this.damageBox, [this.ground, this.knight])
   }
 
   update() {
@@ -37,6 +43,12 @@ export default class Game extends Phaser.Scene {
   generateKnight() {
     const knight = new Knight(this, 500, 100)
     return knight
+  }
+
+  generateDamageBox() {
+    const DamageBox = new testBox(this, 800, 350)
+    DamageBox.hpText = this.add.text(DamageBox.x * 0.96, DamageBox.y - DamageBox.height + 50, `HP: ${DamageBox.health}`)
+    return DamageBox
   }
 
   collideCallback() {
