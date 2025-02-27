@@ -1,8 +1,7 @@
-import { KEY_BINDINGS } from "../constants";
 import attack_state from "./attack_state";
 import base_state from "./base_state";
 import idle_state from "./idle_state";
-import { keys } from "../constants";
+import { keys, KEY_BINDINGS } from "../../../components/constants"
 
 
 export default class move_state_left extends base_state {

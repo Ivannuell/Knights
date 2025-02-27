@@ -1,4 +1,4 @@
-import { KEY_BINDINGS, keys } from "../constants";
+import { KEY_BINDINGS, keys } from "../../../components/constants";
 import attack_state from "./attack_state";
 import base_state from "./base_state";
 import move_state_left from "./move_state_left";

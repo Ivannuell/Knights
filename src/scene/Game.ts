@@ -1,6 +1,6 @@
-import { CollisionHandler } from "../core/collisionHandler"
-import StateMachine from "../core/stateMachine";
-import Knight from "../essentials/Knight"
+import { CollisionHandler } from "../components/collisionHandler"
+import StateMachine from "../core/knight/stateMachine";
+import Knight from "../core/knight/Knight"
 
 export default class Game extends Phaser.Scene {
   knight!: Knight;

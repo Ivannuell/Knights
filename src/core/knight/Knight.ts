@@ -7,6 +7,8 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite {
     this.scene.physics.add.existing(this, false)
     this.scene.add.existing(this)
 
+    this.setBodySize(65, 180, false)
+    this.setOffset(412, 120)
 
     this.setData('onGround', false)
   }
