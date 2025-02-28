@@ -2,6 +2,7 @@ import { CollisionHandler } from "../components/collisionHandler"
 import StateMachine from "../core/knight/stateMachine";
 import Knight from "../core/knight/Knight"
 import { testBox } from "../core/testBox/testBox";
+import stateMachine_testBox from "../core/testBox/stateMachine_testBox";
 
 export default class Game extends Phaser.Scene {
   knight!: Knight;
@@ -10,6 +11,7 @@ export default class Game extends Phaser.Scene {
   ground!: Phaser.GameObjects.Rectangle
 
   state_machine!: StateMachine
+  boxState_machine!: stateMachine_testBox
   collisions = new CollisionHandler(this)
 
   constructor() {
@@ -21,13 +23,15 @@ export default class Game extends Phaser.Scene {
     this.ground = this.generateGround()
     this.damageBox = this.generateDamageBox()
 
+    this.boxState_machine = new stateMachine_testBox(this, this.damageBox)
     this.state_machine = new StateMachine(this, this.knight)
-    
+
     this.collisions.addCollider(this.knight, this.ground)
     this.collisions.addCollider(this.damageBox, [this.ground, this.knight])
   }
 
   update() {
+    this.boxState_machine.updateState()
     this.state_machine.updateState()
   }
 

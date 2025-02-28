@@ -6,7 +6,7 @@ export default abstract class base_state {
   scene!: Phaser.Scene
   keyboardAPI!: Phaser.Input.Keyboard.KeyboardPlugin
 
-  entered = false
+  entered!: boolean
 
 
   abstract enter(): void

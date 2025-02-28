@@ -13,6 +13,9 @@ export default class idle_state extends base_state {
 
     this.player.body!.velocity.x = 0
     this.player.anims.play('idle', true)
+
+    this.player.setBodySize(65, 180, false)
+    this.player.setOffset(412, 120)
     this.KEYS = this.scene.input.keyboard?.addKeys(KEY_BINDINGS) as keys
 
   }
