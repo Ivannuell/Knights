@@ -14,14 +14,19 @@ export default class takeDamage_state extends boxState {
     this.box.setFillStyle(0xff0000);
     this.box.health -= 10;
     this.box.hpText.setText(`HP: ${this.box.health}`);
-    this.stateMachine.setState(new idleBox_state(this.scene, this.stateMachine));
-
-    // this.scene.time.delayedCall(500, () => {
-    // }, [], this);
   }
 
   update() {
     // No immediate state transition here
+    //TODO: maybe better to add a separate state for dying
+    if (this.box.health <= 0) {
+      const randPos = Phaser.Math.Between(100, 900)
+      this.box.setPosition(randPos, 350)
+      this.box.body!.position.x = randPos - this.box.width / 2
+      this.box.hpText.setPosition(randPos, this.box.hpText.y)
+      this.box.health = 100
+    }
+    this.stateMachine.setState(new idleBox_state(this.scene, this.stateMachine));
   }
 
   exit() {
