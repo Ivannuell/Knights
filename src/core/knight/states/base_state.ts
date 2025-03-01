@@ -1,7 +1,8 @@
+import Knight from "../Knight";
 import StateMachine from "../stateMachine";
 
 export default abstract class base_state {
-  player!: Phaser.Physics.Arcade.Sprite;
+  player!: Knight;
   stateMachine!: StateMachine;
   scene!: Phaser.Scene
   keyboardAPI!: Phaser.Input.Keyboard.KeyboardPlugin

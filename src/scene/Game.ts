@@ -27,15 +27,15 @@ export default class Game extends Phaser.Scene {
     this.state_machine = new StateMachine(this, this.knight)
 
     this.collisions.addCollider(this.knight, this.ground)
-    this.collisions.addCollider(this.damageBox, [this.ground, this.knight])
+    this.collisions.addCollider(this.damageBox, [this.ground])
+    this.collisions.addOverlap(this.knight.attackBox, this.damageBox)
   }
 
   update() {
+    //TODO: manage all stateMachine in one place
     this.boxState_machine.updateState()
     this.state_machine.updateState()
   }
-
-
 
 
   generateGround() {
@@ -57,7 +57,6 @@ export default class Game extends Phaser.Scene {
 
   collideCallback() {
     console.log('Knight has arrived!!');
-
   }
 
 

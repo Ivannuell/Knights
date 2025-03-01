@@ -6,5 +6,10 @@ export class attackBox extends Phaser.GameObjects.Rectangle {
 
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this, true);
+    this.setName('attackBox');
+    // this.body!.offset.x = this.width
+    (this.body as Phaser.Physics.Arcade.StaticBody).setSize(200, 200);
+    (this.body as Phaser.Physics.Arcade.StaticBody).onOverlap = true
+  
   }
 }

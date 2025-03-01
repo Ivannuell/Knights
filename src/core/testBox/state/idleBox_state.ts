@@ -12,20 +12,31 @@ export default class idleBox_state extends boxState {
     this.entered = false
   }
 
+  trigger = false
+
   enter() {
     this.scene.time.delayedCall(300, () => {
       this.box.setFillStyle(0xffffff)
     })
     console.log("entered idlebox state")
+
+    this.scene.physics.world.once(Phaser.Physics.Arcade.Events.OVERLAP, (obj1: Phaser.GameObjects.GameObject, obj2: Phaser.GameObjects.GameObject) => {
+      console.log('obj1 --- ', obj1)
+      console.log('obj2 --- ', obj2)
+
+      if (obj2.name == 'testBox') {
+        this.stateMachine.setState(new takeDamage_state(this.scene, this.stateMachine))
+      }
+    }, this)
   }
 
   update() {
     //TODO: add logic when attacking
-    if (this.scene.input.keyboard?.checkDown(this.scene.input.keyboard?.addKey('N'), 500)) {
-      this.stateMachine.setState(new takeDamage_state(this.scene, this.stateMachine))
-      return
-    }
-    this.stateMachine.setState(this)
+
+    // if (this.trigger) {
+      
+    //   return
+    // }
   }
 
   exit() {

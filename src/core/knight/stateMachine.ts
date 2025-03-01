@@ -1,10 +1,11 @@
+import Knight from "./Knight";
 import base_state from "./states/base_state";
 import idle_state from "./states/idle_state";
 
 
 export default class StateMachine {
   activeState!: base_state
-  constructor(public scene: Phaser.Scene, public player: Phaser.Physics.Arcade.Sprite) {
+  constructor(public scene: Phaser.Scene, public player: Knight) {
     this.activeState = new idle_state()
     this.activeState.scene = scene
     this.activeState.player = player

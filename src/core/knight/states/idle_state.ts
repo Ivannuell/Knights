@@ -31,7 +31,6 @@ export default class idle_state extends base_state {
       return new move_state_left()
     }
 
-
     return this
   }
 
