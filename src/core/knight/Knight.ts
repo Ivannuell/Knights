@@ -17,7 +17,6 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite {
     this.scene.physics.world.remove(this.attackBox.body as Phaser.Physics.Arcade.Body)
     this.attackBox.setActive(false)
     this.attackBox.setAlpha(0)
-
   }
 
   public attackBox!: attackBox
